@@ -1,0 +1,64 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+<!--    <script type="text/javascript" src="js/jquery.js"></script>-->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<!--    <script src="js/jquery-1.12.4.js"></script>-->
+    <script language="JavaScript" type="text/JavaScript">
+
+        // document.cookie="userId=828";
+        // document.cookie="userName=杨";
+        // let cookie = document.cookieId;
+        // alert(cookie.big());
+        // // GA1.1.1000170594.1599715571
+
+    function exit() {
+        // let id = $("input").attr("value");
+
+        alert("退出？");
+        $.ajax({
+            url: "http://localhost:8080/sessionTest/deleteSession",
+            // data:{id:id},
+            success: function (data) {
+
+                // if(data == 1){
+                    alert("位置设置成功"+data);
+                    // window.parent.location.reload();
+                    // var index = parent.layer.getFrameIndex(window.name);
+                    // parent.layer.close(index);
+                // }
+            }
+        })
+
+    }
+        // $(function(){写执行代码})
+
+    </script>
+    <script  type="text/javascript" th:inline="javascript">
+
+
+    </script>
+</head>
+<body>
+<!--<span th:text="${name}"></span>-->
+<!--<span>欢迎:-->
+<!--    <span th:text="${user.name}"></span>-->
+<!--</span>-->
+
+<div th:object="${user}">
+    <input type="hidden" th:value="*{catId}" name="id"/>
+    <p>id: <span th:text="*{catId}">Sebastian</span></p>
+    <p>Name: <span th:text="*{name}">Sebastian</span></p>
+    <p>showStatus: <span th:text="*{showStatus}">showStatus</span></p>
+    <button th:id="btn">exit</button>
+    <button onclick="exit()" id="exit1">exit</button>
+</div>
+</body>
+</html>
